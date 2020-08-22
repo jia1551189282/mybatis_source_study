@@ -12,7 +12,10 @@
     <description> mybatis 源码学习</description>
     <modules>
         <module>IPersistence_test</module>
+        <module>Ipersistence</module>
     </modules>
+
+
 
 
 </project>
