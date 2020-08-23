@@ -1,7 +1,7 @@
 <Mapper namespace="user">
 
     <!--sql的唯一标识：namespace.id来组成 ： statementId-->
-    <select id="findAll" resultType="com.lagou.pojo.User" >
+    <select id="findAll" resultType="com.jiajia.study.pojo.User" >
         select * from user
     </select>
 
@@ -10,7 +10,7 @@
        user.setId(1);
        user.setUsername("zhangsan")
    -->
-    <select id="findByCondition" resultType="com.lagou.pojo.User" paramterType="com.lagou.pojo.User">
+    <select id="findByCondition" resultType="com.jiajia.study.pojo.User" paramterType="com.jiajia.study.pojo.User">
         select * from user where id = #{id} and username = #{username}
     </select>
 

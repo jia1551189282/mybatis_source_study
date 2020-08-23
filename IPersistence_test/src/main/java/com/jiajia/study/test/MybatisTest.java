@@ -6,8 +6,12 @@ import com.jiajia.study.sqlSession.SqlSessionFactory;
 import com.jiajia.study.sqlSession.SqlSessionFactoryBuilder;
 import org.dom4j.DocumentException;
 
+import java.beans.IntrospectionException;
 import java.beans.PropertyVetoException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
+import java.util.List;
 
 /**
  * @author zjiajia
@@ -15,7 +19,7 @@ import java.io.InputStream;
  */
 public class MybatisTest {
 
-    public static void main(String[] args) throws PropertyVetoException, DocumentException {
+    public static void main(String[] args) throws PropertyVetoException, DocumentException, IllegalAccessException, ClassNotFoundException, IntrospectionException, InstantiationException, SQLException, InvocationTargetException, NoSuchFieldException {
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
 
@@ -23,6 +27,10 @@ public class MybatisTest {
 
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
-        sqlSession.selectList("user.selectList");
+        List<Object> list = sqlSession.selectList("user.findAll");
+        for (Object o: list
+             ) {
+            System.out.println(o);
+        }
     }
 }
